@@ -1,2 +1,480 @@
-# feria-de-ciencias-secu-18
-pagina para subir los avances
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Lab: Mikhuna Yachay Wasi - Infografía</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7FFF7;
+            color: #1A535C;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        .kpi-card {
+            background-color: #FFFFFF;
+            border-left: 5px solid #FF6B6B;
+        }
+        .section-title {
+            color: #1A535C;
+            font-weight: 900;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            color: #4ECDC4;
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-[#1A535C]">Food Lab: Mikhuna Yachay Wasi</h1>
+            <p class="text-sm font-semibold text-[#FF6B6B]">Colegio Secundario N° 18 - Coranzulí</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="intro" class="text-center mb-20">
+            <h2 class="text-4xl md:text-6xl font-black text-[#1A535C] mb-4">La Investigación en Acción</h2>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">Un proyecto transformador para empoderar a nuestra comunidad frente a los desafíos nutricionales, rescatando nuestra herencia y promoviendo un futuro más saludable.</p>
+        </section>
+
+        <section id="problematica" class="mb-16">
+            <h3 class="section-title">Nuestra Realidad Alimentaria</h3>
+            <p class="section-subtitle">Detectamos una preocupante tendencia hacia el consumo de alimentos ultraprocesados (UPF), con escaso conocimiento sobre sus efectos y el etiquetado nutricional.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card kpi-card p-6">
+                    <h4 class="text-2xl font-bold text-[#1A535C] mb-2">Consumo de Ultraprocesados</h4>
+                    <p class="text-5xl font-black text-[#FF6B6B]">85.7%</p>
+                    <p class="text-gray-600 mt-2">De los adolescentes consumen snacks salados 1-2 veces por semana, evidenciando una alta dependencia de los UPF.</p>
+                </div>
+                <div class="card kpi-card p-6 border-left-color-[#4ECDC4]">
+                    <h4 class="text-2xl font-bold text-[#1A535C] mb-2">Desvalorización Ancestral</h4>
+                    <p class="text-5xl font-black text-[#4ECDC4]">+200%</p>
+                    <p class="text-gray-600 mt-2">Es el aumento esperado en el consumo de alimentos regionales tras la intervención, partiendo de una base de casi nulo conocimiento y uso.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analisis-consumo" class="mb-16">
+            <h3 class="section-title">Los Datos Hablan</h3>
+            <p class="section-subtitle">Analizamos los hábitos de 35 estudiantes para entender a fondo el consumo en nuestra comunidad escolar.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card">
+                    <h4 class="text-xl font-bold text-center mb-4">Perfil de los Encuestados</h4>
+                    <div class="chart-container h-[300px]">
+                        <canvas id="perfilDemograficoChart"></canvas>
+                    </div>
+                     <p class="text-center text-sm text-gray-500 mt-4">La mayoría de los participantes son de 1er y 2do año, con una distribución de género casi equitativa.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-bold text-center mb-4">Consumo Semanal de Gaseosas y Jugos</h4>
+                    <div class="chart-container h-[300px]">
+                        <canvas id="consumoGaseosasChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-gray-500 mt-4">Más de la mitad de los estudiantes consume bebidas azucaradas al menos 1 o 2 veces por semana.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tipos-alimentos" class="mb-16">
+            <h3 class="section-title">¿Qué Estamos Comiendo?</h3>
+            <p class="section-subtitle">Es crucial diferenciar los alimentos para tomar decisiones informadas. Nuestro proyecto se centró en clarificar estas categorías.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <p class="text-6xl mb-4">🍎</p>
+                    <h4 class="text-2xl font-bold mb-2 text-[#4ECDC4]">Natural</h4>
+                    <p class="text-gray-600">Consumido en su estado original, sin aditivos. Lleno de nutrientes. <br>Ej: Papa andina, quinua, frutas.</p>
+                </div>
+                <div class="card text-center">
+                    <p class="text-6xl mb-4">🥖</p>
+                    <h4 class="text-2xl font-bold mb-2 text-[#FFE66D]">Procesado</h4>
+                    <p class="text-gray-600">Modificado ligeramente para su conservación o para hacerlo comestible. <br>Ej: Pan casero, queso artesanal.</p>
+                </div>
+                <div class="card text-center">
+                    <p class="text-6xl mb-4">🍩</p>
+                    <h4 class="text-2xl font-bold mb-2 text-[#FF6B6B]">Ultraprocesado</h4>
+                    <p class="text-gray-600">Formulación industrial con múltiples aditivos. Hiperpalatable y bajo en nutrientes. <br>Ej: Gaseosas, snacks de paquete.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="etiquetado" class="mb-16">
+            <h3 class="section-title">Decodificando las Etiquetas</h3>
+            <p class="section-subtitle">Una de nuestras misiones fue enseñar a leer e interpretar los sellos de advertencia, una herramienta clave para la salud pública.</p>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                    <div>
+                        <div class="bg-black text-white p-4 rounded-lg aspect-square flex flex-col justify-center items-center">
+                            <p class="font-black text-sm">EXCESO EN</p>
+                            <p class="font-black text-xl">AZÚCARES</p>
+                        </div>
+                        <p class="mt-2 text-sm font-semibold">Riesgo de diabetes y sobrepeso.</p>
+                    </div>
+                    <div>
+                        <div class="bg-black text-white p-4 rounded-lg aspect-square flex flex-col justify-center items-center">
+                            <p class="font-black text-sm">EXCESO EN</p>
+                            <p class="font-black text-xl">GRASAS</p>
+                             <p class="font-black text-xl">TOTALES</p>
+                        </div>
+                        <p class="mt-2 text-sm font-semibold">Aumenta el colesterol y riesgo cardíaco.</p>
+                    </div>
+                    <div>
+                        <div class="bg-black text-white p-4 rounded-lg aspect-square flex flex-col justify-center items-center">
+                            <p class="font-black text-sm">EXCESO EN</p>
+                            <p class="font-black text-xl">GRASAS</p>
+                             <p class="font-black text-xl">SATURADAS</p>
+                        </div>
+                        <p class="mt-2 text-sm font-semibold">Principal causa de arterias obstruidas.</p>
+                    </div>
+                    <div>
+                        <div class="bg-black text-white p-4 rounded-lg aspect-square flex flex-col justify-center items-center">
+                            <p class="font-black text-sm">EXCESO EN</p>
+                            <p class="font-black text-xl">SODIO</p>
+                        </div>
+                        <p class="mt-2 text-sm font-semibold">Causa hipertensión y problemas renales.</p>
+                    </div>
+                    <div>
+                        <div class="bg-black text-white p-4 rounded-lg aspect-square flex flex-col justify-center items-center">
+                            <p class="font-black text-sm">EXCESO EN</p>
+                            <p class="font-black text-xl">CALORÍAS</p>
+                        </div>
+                        <p class="mt-2 text-sm font-semibold">Contribuye al aumento de peso.</p>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <h4 class="text-xl font-bold text-[#1A535C] mb-4">✨ Explicador de Nutrientes con IA ✨</h4>
+                    <p class="text-gray-600 mb-4">Ingresa un nutriente (ej. "azúcares", "sodio") y la IA te explicará su impacto en la salud de los adolescentes.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <input type="text" id="nutrientInput" placeholder="Ej: Azúcares" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-[#4ECDC4] focus:border-[#4ECDC4]">
+                        <button id="explainNutrientBtn" class="bg-[#FF6B6B] text-white px-6 py-3 rounded-lg font-bold hover:bg-red-500 transition-colors">
+                            Explicar
+                            <span id="nutrientSpinner" class="hidden animate-spin h-5 w-5 border-4 border-white border-t-transparent rounded-full ml-2"></span>
+                        </button>
+                    </div>
+                    <div id="nutrientExplanation" class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-700 min-h-[80px]">
+                        La explicación aparecerá aquí...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ancestrales" class="mb-16">
+            <h3 class="section-title">Rescatando Nuestros Tesoros</h3>
+            <p class="section-subtitle">Jujuy posee una riqueza alimentaria invaluable. Identificamos y trabajamos para revalorizar estos alimentos ancestrales.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h4 class="text-xl font-bold">Papa Andina (Oca, Lisa)</h4>
+                    <p class="tag bg-green-100 text-green-800 my-2">Nutritiva</p>
+                    <p class="text-gray-600">Base de la dieta puneña. Rica en carbohidratos complejos, fibra y minerales. Ideal para guisos, sopas y chips saludables.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-bold">Quinua</h4>
+                    <p class="tag bg-blue-100 text-blue-800 my-2">Proteína Completa</p>
+                    <p class="text-gray-600">Un "superalimento" ancestral. Fuente de proteína completa, hierro y magnesio. Perfecta para ensaladas, guisos y hamburguesas.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-bold">Harina de Algarrobo</h4>
+                    <p class="tag bg-yellow-100 text-yellow-800 my-2">Energética</p>
+                    <p class="text-gray-600">Fruto de un árbol nativo, dulce y nutritivo. Alta en fibra y minerales como calcio y hierro. Usada en panes y bebidas.</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-xl font-bold">Chañar</h4>
+                    <p class="tag bg-red-100 text-red-800 my-2">Antioxidante</p>
+                    <p class="text-gray-600">Fruto nativo usado para dulces y arropes. Lleno de vitaminas y antioxidantes, un tesoro en riesgo de olvido.</p>
+                </div>
+                 <div class="card">
+                    <h4 class="text-xl font-bold">Maíz Morado</h4>
+                    <p class="tag bg-purple-100 text-purple-800 my-2">Cultural</p>
+                    <p class="text-gray-600">Variedad ancestral usada para la chicha morada y postres. Rico en antioxidantes (antocianinas) que protegen las células.</p>
+                </div>
+                 <div class="card">
+                    <h4 class="text-xl font-bold">Charqui de Llama</h4>
+                    <p class="tag bg-orange-100 text-orange-800 my-2">Tradicional</p>
+                    <p class="text-gray-600">Carne deshidratada, método de conservación ancestral. Alta en proteínas y baja en grasas. Base de cazuelas y guisos.</p>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <h4 class="text-xl font-bold text-[#1A535C] mb-4">✨ Ideas Ancestrales con IA ✨</h4>
+                <p class="text-gray-600 mb-4">Ingresa un alimento ancestral (ej. "quinua", "algarrobo") y la IA te sugerirá ideas para su uso.</p>
+                <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                    <input type="text" id="ancestralFoodInput" placeholder="Ej: Quinua" class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-[#4ECDC4] focus:border-[#4ECDC4]">
+                    <button id="getAncestralIdeaBtn" class="bg-[#4ECDC4] text-white px-6 py-3 rounded-lg font-bold hover:bg-teal-500 transition-colors">
+                        Generar Idea
+                        <span id="ancestralSpinner" class="hidden animate-spin h-5 w-5 border-4 border-white border-t-transparent rounded-full ml-2"></span>
+                    </button>
+                </div>
+                <div id="ancestralIdea" class="bg-gray-50 p-4 rounded-lg border border-gray-200 text-gray-700 min-h-[80px]">
+                    La idea aparecerá aquí...
+                </div>
+            </div>
+        </section>
+        
+        <section id="soluciones">
+            <h3 class="section-title">Nuestras Propuestas y Futuro</h3>
+            <p class="section-subtitle">El proyecto no termina aquí. Proponemos estrategias concretas para continuar la transformación en nuestra comunidad y más allá.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h4 class="text-2xl font-bold mb-3">Alternativas Saludables 🥝</h4>
+                    <p class="text-gray-600">Promover en kioscos y viandas frutas de estación, cereales andinos, tutucas y agua. Fomentar comidas caseras como tortillas de verduras andinas, incentivando la "Mikhuna Ancestral".</p>
+                </div>
+                <div class="card">
+                    <h4 class="text-2xl font-bold mb-3">Difusión Comunitaria 📢</h4>
+                    <p class="text-gray-600">Crear campañas en redes sociales (Instagram/TikTok) con infografías y recetas. Realizar murales y charlas comunitarias para compartir el conocimiento ancestral y científico.</p>
+                </div>
+                 <div class="card md:col-span-2">
+                    <h4 class="text-2xl font-bold mb-3">Educación Continua 🧠</h4>
+                    <p class="text-gray-600">Integrar la educación nutricional de forma transversal en el currículo escolar. Desarrollar materiales didácticos interactivos como juegos y apps para hacer el aprendizaje sobre etiquetado más atractivo y efectivo para todas las edades.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#1A535C] text-white mt-16">
+        <div class="container mx-auto px-6 py-8 text-center">
+            <p class="font-bold">Un proyecto del Colegio Secundario N° 18, Coranzulí, Jujuy.</p>
+            <p class="text-sm mt-2 opacity-75">Con el apoyo de la comunidad, docentes y el Programa Nacional de Ferias de Ciencias y Tecnología.</p>
+        </div>
+    </footer>
+
+    <script>
+        const wrapLabel = (label) => {
+            const maxLength = 16;
+            if (label.length <= maxLength) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length <= maxLength) {
+                    currentLine += `${word} `;
+                } else {
+                    lines.push(currentLine.trim());
+                    currentLine = `${word} `;
+                }
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const commonChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: {
+                            family: 'Inter',
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        };
+
+        const perfilDemograficoData = {
+            labels: ['1er Año (24%)', '2do Año (21%)', 'Otros (55%)'],
+            datasets: [{
+                label: 'Distribución por Curso',
+                data: [24, 21, 55],
+                backgroundColor: ['#4ECDC4', '#FFE66D', '#FF6B6B'],
+                borderColor: '#F7FFF7',
+                borderWidth: 2
+            }]
+        };
+
+        new Chart(document.getElementById('perfilDemograficoChart'), {
+            type: 'doughnut',
+            data: perfilDemograficoData,
+            options: { ...commonChartOptions }
+        });
+
+        const consumoGaseosasData = {
+            labels: ['Nunca', '1-2 veces/sem', '3-4 veces/sem', '5-7 veces/sem'],
+            datasets: [{
+                label: 'Frecuencia de Consumo',
+                data: [10, 59, 25, 6],
+                backgroundColor: ['#4ECDC4', '#FFE66D', '#FF6B6B', '#1A535C'],
+                borderRadius: 5,
+            }]
+        };
+
+        new Chart(document.getElementById('consumoGaseosasChart'), {
+            type: 'bar',
+            data: consumoGaseosasData,
+            options: {
+                ...commonChartOptions,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%'
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const fetchWithRetry = async (url, options, retries = 3, delay = 1000) => {
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(url, options);
+                    if (response.ok) {
+                        return response;
+                    }
+                } catch (error) {
+                    if (i < retries - 1) {
+                        await new Promise(resolve => setTimeout(resolve, delay * Math.pow(2, i)));
+                    } else {
+                        throw error;
+                    }
+                }
+            }
+            throw new Error('All retries failed');
+        };
+
+        document.getElementById('explainNutrientBtn').addEventListener('click', async () => {
+            const nutrientInput = document.getElementById('nutrientInput').value;
+            const explanationDiv = document.getElementById('nutrientExplanation');
+            const spinner = document.getElementById('nutrientSpinner');
+
+            if (!nutrientInput) {
+                explanationDiv.textContent = 'Por favor, ingresa un nutriente.';
+                return;
+            }
+
+            explanationDiv.textContent = 'Generando explicación...';
+            spinner.classList.remove('hidden');
+
+            try {
+                const prompt = `Explica de forma sencilla el impacto del consumo excesivo de ${nutrientInput} en la salud de los adolescentes, de acuerdo a la información en una infografía de nutrición y evita hablar de enfermedades o diagnósticos graves, enfócate en el bienestar general.`;
+                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const response = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    explanationDiv.textContent = result.candidates[0].content.parts[0].text;
+                } else {
+                    explanationDiv.textContent = 'No se pudo generar una explicación para este nutriente.';
+                }
+            } catch (error) {
+                explanationDiv.textContent = `Error: No se pudo conectar con la IA. Intenta de nuevo.`;
+                console.error('Error fetching nutrient explanation:', error);
+            } finally {
+                spinner.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('getAncestralIdeaBtn').addEventListener('click', async () => {
+            const ancestralFoodInput = document.getElementById('ancestralFoodInput').value;
+            const ideaDiv = document.getElementById('ancestralIdea');
+            const spinner = document.getElementById('ancestralSpinner');
+
+            if (!ancestralFoodInput) {
+                ideaDiv.textContent = 'Por favor, ingresa un alimento ancestral.';
+                return;
+            }
+
+            ideaDiv.textContent = 'Generando idea...';
+            spinner.classList.remove('hidden');
+
+            try {
+                const prompt = `Sugiere una forma moderna y saludable de incorporar ${ancestralFoodInput} en la dieta diaria de un adolescente de Jujuy, o una receta sencilla para un snack o comida principal. Enfócate en la facilidad y el atractivo para jóvenes.`;
+                const chatHistory = [{ role: "user", parts: [{ text: prompt }] }];
+                const payload = { contents: chatHistory };
+                const apiKey = ""; 
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                const response = await fetchWithRetry(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    ideaDiv.textContent = result.candidates[0].content.parts[0].text;
+                } else {
+                    ideaDiv.textContent = 'No se pudo generar una idea para este alimento ancestral.';
+                }
+            } catch (error) {
+                ideaDiv.textContent = `Error: No se pudo conectar con la IA. Intenta de nuevo.`;
+                console.error('Error fetching ancestral food idea:', error);
+            } finally {
+                spinner.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
+
